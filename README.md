@@ -1,27 +1,27 @@
-# TrustDocs 🚀
+# Mira 🤖📈
 
-AI-powered contract notary & risk intelligence tool
-Upload contracts, get AI-driven insights, and anchor them on Hedera.
+Autonomous AI token watcher and trading agent on Hedera.  
+Set a price rule, let Mira decide when to buy, and log it all on-chain.
 
 ---
 
 ## 🔍 Overview
 
-TrustDocs lets users upload agreements (loan papers, invoices, NDAs), extracts key data via AI, assesses risk, and writes a verifiable summary on Hedera’s File and Consensus Services. Users authenticate through their Hedera wallet—no email sign-up required.
+Mira is a smart on-chain agent that tracks token prices and makes autonomous buy decisions based on your defined thresholds. Once triggered, it executes a mock purchase and records the logic transparently using Hedera’s Consensus Service.
+
+No email logins — just your Hedera wallet and a simple UI. Mira handles the rest.
 
 ---
 
 ## ⚙️ Features
 
-- **Document Upload** (PDF or plain text)
-- **LLM Extraction**: Party A, Party B, amount, dates, etc.
-- **Risk Scoring**: Flag issues like missing fields or high-risk amounts
-- **On‑Chain Notarization**:
-  - Hedera File Service: store structured summary
-  - Hedera Consensus Service: log AI verdict
-
-- **Database Logging**: Supabase tracks contracts, risk levels, and transaction IDs
-- **Wallet-based Auth**: Authenticate using Blade or WalletConnect (no passwords)
+- **Watchlist Setup**: Track tokens, set price alerts, configure triggers
+- **Autonomous Actions**: Executes buy logic when conditions are met
+- **LLM-Powered Justifications**: Explains each buy with natural language reasoning (OpenAI/Gemini)
+- **On-Chain Logging**:
+  - Uses Hedera Consensus Service to record actions
+  - Optional: Save AI explanation via Hedera File Service
+- **Wallet Auth**: Blade Wallet or WalletConnect — no email required
 
 ---
 
@@ -31,15 +31,15 @@ TrustDocs lets users upload agreements (loan papers, invoices, NDAs), extracts k
 
 - Node.js (v18+)
 - Yarn or npm
-- Active Supabase project
-- Gemini API key
-- Hedera testnet credentials
+- PostgreSQL DB (local or cloud)
+- OpenAI or Gemini API key
+- Hedera testnet account
 
 ### Installation
 
 ```bash
-git clone https://github.com/your-username/trustdocs.git
-cd trustdocs
+git clone https://github.com/your-username/mira-agent.git
+cd mira-agent
 cp .env.example .env
 npm install
 npm run dev
@@ -47,69 +47,87 @@ npm run dev
 
 ### Usage
 
-1. Navigate to `http://localhost:3000`
-2. Connect your Hedera wallet
-3. Upload a contract
-4. View AI-extracted fields, risk verdict, Supabase record, and Hedera transaction details
+1. Visit `http://localhost:3000`
+2. Connect Hedera wallet (Blade/HashPack)
+3. Input token symbol and price rule
+4. Mira starts watching, acts if price hits
+5. See history and reasoning
 
 ---
 
----
+## 📁 Project Structure
 
-## 🧹 Architecture
-
-- **Frontend**: Next.js + Tailwind CSS
-- **Backend**: Next.js API Routes (Node.js)
-- **AI**: Gemini
-- **Storage / DB**: Supabase PostgreSQL + Storage
-- **Blockchain**: Hedera JS SDK (File & Consensus Services)
-- **Wallet Integration**: Blade Labs SDK or WalletConnect
-
----
-
-## 🧰 How It Works
-
-1. User connects wallet
-2. Uploads contract document
-3. System calls AI to extract structured data
-4. Risk logic evaluates and tags verdict
-5. Summary and hash stored via Hedera File Service
-6. Verdict logged using Hedera Consensus Service
-7. All records saved in Supabase for dashboard display
+```
+/app
+  /db          # Drizzle schema + PG client
+  /logic       # Mira’s watch engine & triggers
+  /api         # HCS + action handlers
+  /components  # UI elements
+/pages         # Route definitions (if needed)
+```
 
 ---
 
-## 🧳️ Use Cases
+## 🧠 Architecture
 
-- Automated legal audit & notary trail
-- Risk checks for lending or Web3 agreements
-- DAO agreement logging
-- ESG & compliance documentation
+- **Frontend**: Next.js + Tailwind
+- **Backend**: Server Components + minimal API routes
+- **AI Engine**: OpenAI or Gemini LLMs
+- **Database**: PostgreSQL + Drizzle ORM
+- **Blockchain**: Hedera HCS + File Service
+- **Wallets**: Blade SDK / WalletConnect
 
 ---
 
-## 📚 Inspiration & Resources
+## 🔁 Flow Summary
 
-- Built for **Hedera Hello Future: Origins Hackathon**, AI & Agents track
-- Hedera File Service / Consensus official docs
-- Gemini LLM integration
-- Supabase for database and file storage
+1. User sets watch: Token X, buy if < $Y
+2. Mira stores config in DB
+3. Background watcher (cron/poll) checks price
+4. If condition met:
+   - Calls mock smart contract
+   - Logs result to HCS
+   - Queries LLM: "Why was this a good buy?"
+   - Stores explanation
+
+---
+
+## 💡 Use Cases
+
+- Autonomous DeFi buy bot
+- AI-powered NFT sniping
+- Auto-trader for in-game tokens
+- Smart AI Copilot for price-based Web3 logic
+
+---
+
+## 📚 Built With
+
+- Hedera SDK + HCS
+- Drizzle ORM + PostgreSQL
+- OpenAI GPT / Gemini Pro APIs
+- Next.js + Tailwind CSS
 
 ---
 
 ## ✅ Contribution
 
-Feedback and pull requests are welcome! If you want to contribute:
-
-1. Fork the repo
-2. Create a feature branch
-3. Submit a pull request
-4. Verify with tests or local demo
+1. Fork this repo
+2. Create your feature branch
+3. Commit changes
+4. Submit PR with context
 
 ---
 
 ## 📄 License
 
-MIT License – see `LICENSE` file for details.
+MIT — see LICENSE
 
 ---
+
+## 📞 Contact
+
+- **Project**: Mira
+- **Discord**: @MiraAgent
+- **GitHub**: [github.com/your-username/mira-agent](https://github.com/your-username/mira-agent)
+- **Hackathon**: Hedera Hello Future: Origins
