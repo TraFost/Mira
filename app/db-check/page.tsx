@@ -1,4 +1,4 @@
-import { pool } from "~/app/db/client";
+import { pool } from "~/db/client";
 
 export default async function DbCheckPage() {
   const client = await pool.connect();
