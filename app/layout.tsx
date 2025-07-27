@@ -4,6 +4,8 @@ import type { Metadata } from "next";
 
 import "./globals.css";
 
+import Navbar from "./components/Navbar";
+
 const sora = Sora({
   variable: "--font-sora",
   subsets: ["latin"],
@@ -21,7 +23,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${sora.className} antialiased`}>{children}</body>
+      <body className={`${sora.className} antialiased`}>
+        <Navbar />
+        {children}
+      </body>
     </html>
   );
 }
