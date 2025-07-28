@@ -15,7 +15,7 @@ export default function Home() {
           on-chain.
         </p>
         <a
-          href="/login"
+          href="/login-modal"
           className="inline-block rounded-full bg-gradient-to-r from-secondary via-foreground to-gradient p-[2px] mt-4"
         >
           <span className="block rounded-full bg-background px-8 py-3 text-foreground text-lg hover:bg-background/50">
@@ -65,7 +65,7 @@ export default function Home() {
             trades — all without writing a single line of code.
           </p>
           <a
-            href="/login"
+            href="/login-modal"
             className="inline-block rounded-full bg-gradient-to-r from-secondary via-foreground to-gradient p-[2px] hover:scale-[1.02] transition-transform"
           >
             <span className="block rounded-full bg-background px-8 py-3 text-foreground font-semibold">

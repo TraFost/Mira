@@ -3,15 +3,18 @@
 import Link from "next/link";
 
 import { useExclude } from "~/hooks/use-exclude.hook";
+
 import { PAGES } from "~/utils/constants/pages.constant";
 
 export default function Navbar() {
-  const isExcluded = useExclude(PAGES.auth.login);
+  const { auth, main } = PAGES;
+
+  const isExcluded = useExclude([auth.login, auth.loginModal, main.dashboard]);
 
   if (isExcluded) return null;
 
   return (
-    <>
+    <nav>
       <div className="fixed top-4 left-1/2 -translate-x-1/2 w-full max-w-4xl px-6 py-3 z-50 bg-foreground/5 outline-1 outline-foreground/20 rounded-full backdrop-blur-md bg-opacity-30 shadow-lg flex justify-between items-center">
         <a href="/" className="text-foreground text-2xl font-bold">
           🔥 Mira
@@ -23,7 +26,7 @@ export default function Navbar() {
           </a>
 
           <Link
-            href="/login"
+            href="/login-modal"
             scroll={false}
             className="inline-block rounded-full bg-gradient-to-r from-secondary via-foreground to-gradient p-[2px]"
           >
@@ -35,6 +38,6 @@ export default function Navbar() {
       </div>
 
       <div className="h-[92px]" />
-    </>
+    </nav>
   );
 }

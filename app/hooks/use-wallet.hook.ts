@@ -15,17 +15,35 @@ export function useWallet() {
   const originUrl = typeof window !== "undefined" ? window.location.origin : "";
 
   const connect = useCallback(async () => {
+    let timeout: NodeJS.Timeout | undefined;
+
     try {
       setStatus("connecting");
+
       const connector = await getDAppConnector(originUrl);
+
+      timeout = setTimeout(() => {
+        console.warn("Wallet modal still open, resetting to idle");
+        setStatus("idle");
+        setAccountId(null);
+      }, 15_000);
+
       const session = await connector.openModal();
-      if (!session) return;
+      if (!session) {
+        console.warn("User closed modal manually");
+        setStatus("idle");
+        setAccountId(null);
+        return;
+      }
 
       const acct = connector.signers.at(-1)?.getAccountId().toString() ?? null;
+
       setAccountId(acct);
       setStatus("connected");
     } catch (e) {
-      console.error(e);
+      console.error("Wallet error:", e);
+
+      clearTimeout(timeout);
       setStatus("error");
     }
   }, [originUrl]);
