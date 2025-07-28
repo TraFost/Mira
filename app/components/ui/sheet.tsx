@@ -6,7 +6,7 @@ import * as React from "react";
 
 import { XIcon } from "lucide-react";
 
-import { cn } from "~/app/lib/utils";
+import { cn } from "~/lib/utils";
 
 function Sheet({ ...props }: React.ComponentProps<typeof SheetPrimitive.Root>) {
   return <SheetPrimitive.Root data-slot="sheet" {...props} />;

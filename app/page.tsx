@@ -1,32 +1,4 @@
-import { Bot, Brain, ClockFading, Link, Wallet } from "lucide-react";
-
-const CARD = [
-  {
-    icon: <ClockFading />,
-    title: "Watchlist Setup",
-    desc: "Track tokens, set price alerts, configure triggers",
-  },
-  {
-    icon: <Bot />,
-    title: "Autonomous Actions",
-    desc: "Executes buy logic when conditions are met",
-  },
-  {
-    icon: <Brain />,
-    title: "LLM-Powered Justifications",
-    desc: "Explains each buy with natural language reasoning (OpenAI/Gemini)",
-  },
-  {
-    icon: <Link />,
-    title: "On-Chain Logging",
-    desc: "Uses Hedera Consensus Service to record actions",
-  },
-  {
-    icon: <Wallet />,
-    title: "Wallet Auth",
-    desc: "Blade Wallet or WalletConnect — no email required",
-  },
-];
+import { FEATURES } from "~/utils/constants/features.constant";
 
 export default function Home() {
   return (
@@ -69,7 +41,7 @@ export default function Home() {
           Features & <span className="text-sky-blue">Tools</span>
         </p>
         <div className="flex flex-col justify-center gap-4">
-          {CARD.map((c) => (
+          {FEATURES.map((c) => (
             <div key={c.title} className="flex flex-col gap-1">
               <div className="flex gap-2 items-center">
                 {c.icon}
