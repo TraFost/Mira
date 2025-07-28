@@ -1,12 +1,14 @@
 "use client";
 
-import { usePathname } from "next/navigation";
+import Link from "next/link";
+
+import { useExclude } from "~/hooks/use-exclude.hook";
+import { PAGES } from "~/utils/constants/pages.constant";
 
 export default function Navbar() {
-  const pathname = usePathname();
-  const exclude = ["/login"];
+  const isExcluded = useExclude(PAGES.auth.login);
 
-  if (exclude.includes(pathname)) return null;
+  if (isExcluded) return null;
 
   return (
     <>
@@ -14,20 +16,24 @@ export default function Navbar() {
         <a href="/" className="text-foreground text-2xl font-bold">
           🔥 Mira
         </a>
+
         <div className="flex gap-8 items-center">
           <a className="hidden md:block hover:underline" href="#">
             Market
           </a>
-          <a
+
+          <Link
             href="/login"
+            scroll={false}
             className="inline-block rounded-full bg-gradient-to-r from-secondary via-foreground to-gradient p-[2px]"
           >
             <span className="block rounded-full bg-background px-4 py-1 text-foreground hover:bg-background/50">
               Start
             </span>
-          </a>
+          </Link>
         </div>
       </div>
+
       <div className="h-[92px]" />
     </>
   );
