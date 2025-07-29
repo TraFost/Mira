@@ -21,7 +21,7 @@ No email logins — just your Hedera wallet and a simple UI. Mira handles the re
 - **On-Chain Logging**:
   - Uses Hedera Consensus Service to record actions
   - Optional: Save AI explanation via Hedera File Service
-- **Wallet Auth**: Blade Wallet or WalletConnect — no email required
+- **Wallet Auth**: WalletConnect — no email required
 
 ---
 
@@ -55,19 +55,6 @@ npm run dev
 
 ---
 
-## 📁 Project Structure
-
-```
-/app
-  /db          # Drizzle schema + PG client
-  /logic       # Mira’s watch engine & triggers
-  /api         # HCS + action handlers
-  /components  # UI elements
-/pages         # Route definitions (if needed)
-```
-
----
-
 ## 🧠 Architecture
 
 - **Frontend**: Next.js + Tailwind
@@ -75,7 +62,7 @@ npm run dev
 - **AI Engine**: OpenAI or Gemini LLMs
 - **Database**: PostgreSQL + Drizzle ORM
 - **Blockchain**: Hedera HCS + File Service
-- **Wallets**: Blade SDK / WalletConnect
+- **Wallets**: WalletConnect
 
 ---
 
@@ -107,6 +94,7 @@ npm run dev
 - Drizzle ORM + PostgreSQL
 - OpenAI GPT / Gemini Pro APIs
 - Next.js + Tailwind CSS
+- WalletConnect
 
 ---
 
@@ -128,6 +116,4 @@ MIT — see LICENSE
 ## 📞 Contact
 
 - **Project**: Mira
-- **Discord**: @MiraAgent
-- **GitHub**: [github.com/your-username/mira-agent](https://github.com/your-username/mira-agent)
 - **Hackathon**: Hedera Hello Future: Origins
