@@ -1,6 +1,18 @@
 @import 'tailwindcss';
 @import 'tw-animate-css';
 
+/* Hapus panah di Chrome, Safari, Edge */
+input[type='number']::-webkit-inner-spin-button,
+input[type='number']::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Hapus panah di Firefox */
+input[type='number'] {
+  -moz-appearance: textfield;
+}
+
 :root {
   --gradient: #4058e4;
   --sky-blue: #13b3be;

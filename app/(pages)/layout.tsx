@@ -2,8 +2,6 @@ import { Sora } from "next/font/google";
 
 import type { Metadata } from "next";
 
-import Navbar from "~/components/navbar";
-
 import Navbar from "../components/layout/navbar";
 import "../globals.css";
 

@@ -6,7 +6,7 @@ export default function DashboardLayout({ children }: PropsWithChildren) {
   return (
     <div className="mx-4 lg:mx-24 flex pt-24">
       {/* Sidebar */}
-      <aside className="hidden fixed top-24 left-0 lg:left-16 w-64 h-fit lg:flex flex-col gap-16">
+      {/* <aside className="hidden fixed top-24 left-0 lg:left-16 w-64 h-fit lg:flex flex-col gap-16">
         <a
           href="/"
           className="text-5xl font-bold bg-clip-text text-transparent bg-linear-to-tr from-foreground to-gradient"
@@ -28,7 +28,7 @@ export default function DashboardLayout({ children }: PropsWithChildren) {
         </ul>
       </aside>
 
-      <div className="w-64 hidden lg:block" />
+      <div className="w-64 hidden lg:block" /> */}
 
       <main className="flex-1 w-full">{children}</main>
     </div>
