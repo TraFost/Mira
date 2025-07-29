@@ -1,7 +1,7 @@
-import { drizzle } from "drizzle-orm/node-postgres";
+import { drizzle } from "drizzle-orm/neon-http";
 import { Pool } from "pg";
 
-import * as schema from "./schema/index.schema";
+import * as schema from "./schema/main.schema";
 
 const globalForDb = globalThis as unknown as { pgPool?: Pool };
 
