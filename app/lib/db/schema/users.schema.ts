@@ -1,9 +1,8 @@
-import { pgTable, text, timestamp } from "drizzle-orm/pg-core";
+import { pgTable, text, uuid } from "drizzle-orm/pg-core";
 
 export const users = pgTable("users", {
-  wallet: text("wallet").primaryKey(),
-  connectedAt: timestamp("connected_at").defaultNow(),
-  lastActiveAt: timestamp("last_active_at"),
+  id: uuid("id").defaultRandom().primaryKey(),
+  walletAddress: text("wallet_address").unique().notNull(),
 });
 
 export type User = typeof users.$inferSelect;
