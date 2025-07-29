@@ -1,5 +1,6 @@
 import { useCallback, useEffect, useState } from "react";
 
+import { baseFetch } from "~/lib/utils/fetch";
 import { getDAppConnector } from "~/lib/wallet/hedera-wallet";
 
 type WalletStatus = "idle" | "connecting" | "connected" | "error";
@@ -25,14 +26,12 @@ export function useWallet() {
       timeout = setTimeout(() => {
         console.warn("Wallet modal still open, resetting to idle");
         setStatus("idle");
-        setAccountId(null);
       }, 15_000);
 
       const session = await connector.openModal();
       if (!session) {
         console.warn("User closed modal manually");
         setStatus("idle");
-        setAccountId(null);
         return;
       }
 
@@ -40,6 +39,11 @@ export function useWallet() {
 
       setAccountId(acct);
       setStatus("connected");
+
+      await baseFetch("/api/wallet/save", {
+        method: "POST",
+        body: { accountId: acct },
+      });
     } catch (e) {
       console.error("Wallet error:", e);
 
@@ -47,6 +51,8 @@ export function useWallet() {
       setStatus("error");
     }
   }, [originUrl]);
+
+  console.log(accountId, "ok");
 
   const disconnect = useCallback(async () => {
     const connector = await getDAppConnector(originUrl);
