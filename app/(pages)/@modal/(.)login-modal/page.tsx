@@ -14,7 +14,6 @@ import {
 import { useWallet } from "~/hooks/use-wallet.hook";
 
 const LoginModalPage = () => {
-  console.log("✅ Login modal rendered");
   const { connect, status } = useWallet();
   const router = useRouter();
 
